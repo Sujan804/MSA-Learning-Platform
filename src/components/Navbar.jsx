@@ -1,16 +1,36 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { userLoggedOut } from "../features/auth/authSlice";
 import learningPortal from "../image/learningportal.svg";
 const Navbar = () => {
+  const localAuth = localStorage?.getItem("auth");
+  const user = JSON.parse(localAuth).user;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logoutHandle = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    dispatch(userLoggedOut());
+    navigate("/login");
+  };
+
   return (
     <nav className="shadow-md">
       <div className="max-w-7xl px-5 lg:px-0 mx-auto flex justify-between py-3">
         <img className="h-10" src={learningPortal} alt="learing portal" />
         <div className="flex items-center gap-3">
-          <a href="" className="font-bold">
+          <Link to={"/video/1"} className="font-bold">
+            Videos
+          </Link>
+          <Link to={"/leaderboard"} className="font-bold">
             Leaderboard
-          </a>
-          <h2>Saad Hasan</h2>
-          <button className="flex gap-2 border border-cyan items-center px-4 py-1 rounded-full text-sm transition-all hover:bg-cyan ">
+          </Link>
+          <h2>{user.name}</h2>
+          <button
+            className="flex gap-2 border-red-950 border-cyan items-center px-4 py-1 rounded-full text-sm transition-all hover:bg-red-800 "
+            onClick={logoutHandle}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
