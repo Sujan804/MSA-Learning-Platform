@@ -2,10 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import AdminRoute from "./components/AdminRoute";
 import StudentRoute from "./components/StudentRoute";
 import AdminLogin from "./pages/admin/AdminLogin";
-import Assignment from "./pages/admin/Assignment";
 import AssignmentMark from "./pages/admin/AssignmentMark";
+import Assignments from "./pages/admin/Assignments";
 import Quizzes from "./pages/admin/Quizzes";
 import Videos from "./pages/admin/Videos";
+import Assignment from "./pages/student/Assignment";
 import CoursePlayer from "./pages/student/CoursePlayer";
 import LeaderBoard from "./pages/student/LeaderBoard";
 import Quiz from "./pages/student/Quiz";
@@ -44,6 +45,14 @@ function App() {
             </StudentRoute>
           }
         />
+        <Route
+          path="/assignment/:id"
+          element={
+            <StudentRoute>
+              <Assignment />
+            </StudentRoute>
+          }
+        />
 
         {/* Admin Routes */}
         <Route path="/admin">
@@ -53,7 +62,7 @@ function App() {
             path="assignments"
             element={
               <AdminRoute>
-                <Assignment />
+                <Assignments />
               </AdminRoute>
             }
           />
