@@ -3,7 +3,7 @@ import { useAdminAuth } from "../hooks/useAuth";
 
 const AdminRoute = ({ children }) => {
   const isAdmin = useAdminAuth();
-  console.log("admin", isAdmin);
+
   return isAdmin ? children : <Navigate to="/admin" />;
 };
 

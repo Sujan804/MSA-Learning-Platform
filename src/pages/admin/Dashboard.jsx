@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 
 const Dashboard = () => {
@@ -9,7 +10,7 @@ const Dashboard = () => {
         <div className="mx-auto max-w-7xl px-5 lg:px-0">
           <div className="px-3 md:lg:xl:px-40  py-20 bg-opacity-10">
             <div className="grid grid-cols-1 md:grid-cols-2  gap-6 p-8">
-              <a href="./Videos.html" className="dashboard-item-card">
+              <Link to={"/admin/videos"} className="dashboard-item-card">
                 <svg
                   fill="none"
                   viewBox="0 0 24 24"
@@ -24,9 +25,9 @@ const Dashboard = () => {
                 </svg>
 
                 <p className="text-slate-200 mt-3 ">Videos</p>
-              </a>
+              </Link>
 
-              <a href="./Assignment.html" className="dashboard-item-card">
+              <Link to={"/admin/assignments"} className="dashboard-item-card">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -43,9 +44,9 @@ const Dashboard = () => {
                 </svg>
 
                 <p className="text-slate-200 mt-3">Assignment</p>
-              </a>
+              </Link>
 
-              <a href="./Quizzes.html" className="dashboard-item-card">
+              <Link to={"/admin/quizzes"} className="dashboard-item-card">
                 <svg
                   fill="none"
                   viewBox="0 0 24 24"
@@ -60,9 +61,12 @@ const Dashboard = () => {
                   />
                 </svg>
                 <p className="text-slate-200 mt-3 ">Quizzes</p>
-              </a>
+              </Link>
 
-              <a href="./AssignmentMark.html" className="dashboard-item-card">
+              <Link
+                to={"/admin/assignment-marks"}
+                className="dashboard-item-card"
+              >
                 <svg
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
@@ -77,7 +81,7 @@ const Dashboard = () => {
                 </svg>
 
                 <p className="text-slate-200 mt-3 ">Assignment Mark</p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

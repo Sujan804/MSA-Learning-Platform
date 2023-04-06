@@ -1,54 +1,92 @@
-import React from "react";
-import learningPortal from "../../image/learningportal.svg";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Error from "../../components/ui/Error";
+import { useLoginMutation } from "../../features/auth/authApi";
+import learningportalSVG from "../../image/learningportal.svg";
+
 const AdminLogin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const [login, { data, isLoading, error: responseError }] = useLoginMutation();
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (responseError?.data) {
+      setError(responseError.data);
+    }
+    if (data?.accessToken && data.user) {
+      navigate("/admin/dashboard");
+    }
+  }, [data, responseError, navigate]);
+
+  //Form Handle
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
+    // console.log(email, password);
+    login({ email, password });
+  };
+  if (isLoading) {
+    return (
+      <section className="py-6 bg-primary h-screen grid place-items-center">
+        <h1>Loading....</h1>
+      </section>
+    );
+  }
   return (
     <section className="py-6 bg-primary h-screen grid place-items-center">
       <div className="mx-auto max-w-md px-5 lg:px-0">
         <div>
           <img
             className="h-12 mx-auto"
-            src={learningPortal}
-            alt="learing portal"
+            src={learningportalSVG}
+            alt="learning"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-100">
             Sign in to Admin Account
           </h2>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form
+          className="mt-8 space-y-6"
+          action="#"
+          method="POST"
+          onSubmit={handleSubmit}
+        >
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label className="sr-only">Email address</label>
               <input
-                id="email-address"
-                name="email"
-                type="email"
                 required
+                type="email"
                 className="login-input rounded-t-md"
                 placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
               <label className="sr-only">Password</label>
               <input
-                id="password"
-                name="password"
-                type="password"
                 required
+                type="password"
                 className="login-input rounded-b-md"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
-
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-between">
             <div className="text-sm">
-              <a
-                href="#"
+              <Link
+                to="/login"
                 className="font-medium text-violet-600 hover:text-violet-500"
               >
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -60,6 +98,7 @@ const AdminLogin = () => {
               Sign in
             </button>
           </div>
+          {error !== "" && <Error message={error} />}
         </form>
       </div>
     </section>

@@ -35,7 +35,6 @@ const useStudentAuth = () => {
       const auth = JSON.parse(localAuth);
 
       if (auth?.accessToken && auth?.user) {
-        console.log("user", auth);
         dispatch(
           userLoggedIn({
             accessToken: auth.accessToken,
