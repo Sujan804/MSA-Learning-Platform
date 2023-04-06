@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { useAddVideosMutation } from "../../features/videos/videosApi";
-const AddVideoModal = ({ showModal, setShowModal }) => {
-  const [addVideos, { isSuccess }] = useAddVideosMutation();
+import { useAddAssignmentsMutation } from "../../features/assignment/assignmentApi";
+const AddAssignmentModal = ({ showModal, setShowModal }) => {
+  const [addAssignment, { isSuccess }] = useAddAssignmentsMutation();
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
-  const [views, setViews] = useState("");
-  const [duration, setDuration] = useState("");
+  const [videoId, setVideoId] = useState(null);
+  const [videoTitle, setVideoTitle] = useState("");
+  const [totalMark, setTotalMark] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addVideos({ title, description, url, views, duration });
+    addAssignment({
+      title,
+      video_id: parseInt(videoId),
+      video_title: videoTitle,
+      totalMark: parseInt(totalMark),
+    });
     setShowModal(false);
   };
   return (
@@ -22,7 +26,7 @@ const AddVideoModal = ({ showModal, setShowModal }) => {
             {/*header*/}
             <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
               <h3 className="text-3xl font-semibold text-black">
-                Add a new Video
+                Add a new Assignment
               </h3>
               <button
                 className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -38,7 +42,7 @@ const AddVideoModal = ({ showModal, setShowModal }) => {
               <form className="mt-8 space-y-6 =" onSubmit={handleSubmit}>
                 <div className="block">
                   <label className="font-bold text-lg mr-2 text-black">
-                    Video Title
+                    Assignment Title
                   </label>
                   <input
                     className="  text-lg shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
@@ -51,46 +55,37 @@ const AddVideoModal = ({ showModal, setShowModal }) => {
                 </div>
                 <div className="block">
                   <label className="font-bold text-lg mr-2 text-black">
-                    Description
+                    Video title
                   </label>
                   <textarea
                     className="  text-lg shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
                     placeholder="Video title"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={videoTitle}
+                    onChange={(e) => setVideoTitle(e.target.value)}
                   />
                 </div>
                 <div className="block">
                   <label className="font-bold text-lg mr-2 text-black">
-                    Video url
+                    Video Id
                   </label>
                   <input
                     className="  text-lg shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
-                    placeholder="Video url"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
+                    placeholder="Video id"
+                    type="number"
+                    value={videoId}
+                    onChange={(e) => setVideoId(e.target.value)}
                   />
                 </div>
                 <div className="block">
                   <label className="font-bold text-lg mr-2 text-black">
-                    Video Views
+                    Total mark
                   </label>
                   <input
                     className=" text-lg shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
                     placeholder="Video url"
-                    value={views}
-                    onChange={(e) => setViews(e.target.value)}
-                  />
-                </div>
-                <div className="block">
-                  <label className="font-bold text-lg mr-2 text-black">
-                    Video Duration
-                  </label>
-                  <input
-                    className="text-lg shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
-                    placeholder="Video url"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
+                    type="number"
+                    value={totalMark}
+                    onChange={(e) => setTotalMark(e.target.value)}
                   />
                 </div>
 
@@ -122,4 +117,4 @@ const AddVideoModal = ({ showModal, setShowModal }) => {
   );
 };
 
-export default AddVideoModal;
+export default AddAssignmentModal;

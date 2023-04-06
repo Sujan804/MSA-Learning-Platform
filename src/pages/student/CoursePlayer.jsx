@@ -1,15 +1,21 @@
 import React from "react";
 import Moment from "react-moment";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import VideoPlayerSidebar from "../../components/VideoPlayerSidebar";
+import { useGetVideosQuery } from "../../features/videos/videosApi";
 
 const CoursePlayer = () => {
+  const { data } = useGetVideosQuery();
+  const navigate = useNavigate();
   const { id } = useParams();
   const videos = useSelector((state) => state.video.videos);
   const videoToPlay = videos.filter((video) => video.id == id);
-
+  console.log("video", videoToPlay);
+  if (videoToPlay.length == 0) {
+    return navigate("/leaderboard");
+  }
   // console.log("video", videoToPlay);
   return (
     <>

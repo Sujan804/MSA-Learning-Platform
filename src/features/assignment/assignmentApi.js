@@ -17,8 +17,28 @@ export const assignmentApi = apiSlice.injectEndpoints({
           );
         } catch (error) {}
       },
+      providesTags: ["assignments"],
+    }),
+    addAssignments: builder.mutation({
+      query: (data) => ({
+        url: `/assignments`,
+        method: "POST",
+        body: data,
+      }),
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          if (result) {
+            console.log("result", result.data);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      invalidatesTags: ["assignments"],
     }),
   }),
 });
 
-export const { useGetAssignmentsQuery } = assignmentApi;
+export const { useGetAssignmentsQuery, useAddAssignmentsMutation } =
+  assignmentApi;

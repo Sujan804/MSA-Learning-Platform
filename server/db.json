@@ -86,6 +86,14 @@
       "views": "91.2K",
       "duration": "31:30",
       "createdAt": "2023-02-24T17:59:00.000Z"
+    },
+    {
+      "title": "Facing the Future: The Truth About Artificial Intelligence and Our Jobs - Bangla",
+      "description": "Facing the Future: The Truth About Artificial Intelligence and Our Jobs - Bangla",
+      "url": "https://youtu.be/BihZd2x8Qh8",
+      "views": "234",
+      "duration": "34:8",
+      "id": 5
     }
   ],
   "assignments": [
@@ -102,6 +110,34 @@
       "video_id": 2,
       "video_title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
       "totalMark": 100
+    },
+    {
+      "title": "Add two number",
+      "video_id": null,
+      "video_title": "Add two number Add two number",
+      "totalMark": "100",
+      "id": 3
+    },
+    {
+      "title": "5445",
+      "video_id": "4",
+      "video_title": "4545",
+      "totalMark": "12",
+      "id": 4
+    },
+    {
+      "title": "Facing the Future: The Truth About Artificial Intelligence and Our Jobs - Bangla",
+      "video_id": 1,
+      "video_title": "Facing the Future: The Truth About Artificial Intelligence and Our Jobs - Bangla",
+      "totalMark": 100,
+      "id": 5
+    },
+    {
+      "title": "",
+      "video_id": null,
+      "video_title": "",
+      "totalMark": null,
+      "id": 6
     }
   ],
   "quizzes": [
