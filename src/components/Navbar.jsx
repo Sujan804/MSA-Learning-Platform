@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { useGetAssignmentsQuery } from "../features/assignment/assignmentApi";
+import { useGetAssignmentMarksQuery } from "../features/assignmentMark/assignmentMarkApi";
 import { userLoggedOut } from "../features/auth/authSlice";
 import { useGetQuizzesQuery } from "../features/quiz/quizApi";
 import { useGetVideosQuery } from "../features/videos/videosApi";
@@ -8,6 +10,8 @@ import learningPortal from "../image/learningportal.svg";
 const Navbar = () => {
   const { data, error, isLoading } = useGetVideosQuery();
   const { data: quizzes } = useGetQuizzesQuery();
+  const { data: assignments } = useGetAssignmentsQuery();
+  const { data: assignmentMarks } = useGetAssignmentMarksQuery();
   const localAuth = localStorage?.getItem("auth");
   const user = JSON.parse(localAuth).user;
   const dispatch = useDispatch();

@@ -1,9 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import Assignment from "../../components/Assignment";
 import Navbar from "../../components/Navbar";
-const Assignments = () => {
+const StudentAssignment = () => {
+  const { id } = useParams();
   const assignments = useSelector((state) => state.assignment.assignments);
+
+  const filteredAssignments = assignments.filter(
+    (assignment) => assignment.video_id == id
+  );
 
   return (
     <>
@@ -26,11 +32,12 @@ const Assignments = () => {
                 </thead>
 
                 <tbody className="divide-y divide-slate-600/50">
-                  {assignments.map((assignment, index) => (
+                  {filteredAssignments.map((assignment, index) => (
                     <Assignment
                       assignment={assignment}
                       index={index}
                       key={assignment.id}
+                      noEdit
                     />
                   ))}
                 </tbody>
@@ -43,4 +50,4 @@ const Assignments = () => {
   );
 };
 
-export default Assignments;
+export default StudentAssignment;

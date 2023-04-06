@@ -1,7 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import AssignmentMarkSingle from "../../components/AssignmentMarkSingle";
 import Navbar from "../../components/Navbar";
-
 const AssignmentMark = () => {
+  const assignmentMarks = useSelector(
+    (state) => state.assignmentMark.assignmentMarks
+  );
+  let countPending = 0;
+  let countMarkSent = 0;
+
+  for (let assM of assignmentMarks) {
+    if (assM === "pending") {
+      countPending++;
+    } else {
+      countMarkSent++;
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -10,13 +25,13 @@ const AssignmentMark = () => {
           <div className="px-3 py-20 bg-opacity-10">
             <ul className="assignment-status">
               <li>
-                Total <span>4</span>
+                Total <span>{countMarkSent + countPending}</span>
               </li>
               <li>
-                Pending <span>3</span>
+                Pending <span>{countPending}</span>
               </li>
               <li>
-                Mark Sent <span>1</span>
+                Mark Sent <span>{countMarkSent}</span>
               </li>
             </ul>
             <div className="overflow-x-auto mt-4">
@@ -30,68 +45,14 @@ const AssignmentMark = () => {
                     <th className="table-th">Mark</th>
                   </tr>
                 </thead>
-
                 <tbody className="divide-y divide-slate-600/50">
-                  <tr>
-                    <td className="table-td">
-                      Assignment 1 - Implement Debounce Function
-                    </td>
-                    <td className="table-td">10 Mar 2023 10:58:13 PM</td>
-                    <td className="table-td">Saad Hasan</td>
-                    <td className="table-td">
-                      https://github.com/Learn-with-Sumit/assignment-1
-                    </td>
-                    <td className="table-td input-mark">
-                      <input max="100" value="100" />
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="2"
-                        stroke="currentColor"
-                        className="w-6 h-6 text-green-500 cursor-pointer hover:text-green-400"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="table-td">
-                      Assignment 2 - Implement Best Practices
-                    </td>
-                    <td className="table-td">10 Mar 2023 10:58:13 PM</td>
-                    <td className="table-td">Akash Ahmed</td>
-                    <td className="table-td">
-                      https://github.com/Learn-with-Sumit/assignment-1
-                    </td>
-                    <td className="table-td">50</td>
-                  </tr>
-                  <tr>
-                    <td className="table-td">
-                      Assignment 1 - Scoreboard Application
-                    </td>
-                    <td className="table-td">10 Mar 2023 10:58:13 PM</td>
-                    <td className="table-td">Ferdous</td>
-                    <td className="table-td">
-                      https://github.com/Learn-with-Sumit/assignment-1
-                    </td>
-                    <td className="table-td">100</td>
-                  </tr>
-
-                  <tr>
-                    <td className="table-td">
-                      Assignment 1 - Scoreboard Application
-                    </td>
-                    <td className="table-td">10 Mar 2023 10:58:13 PM</td>
-                    <td className="table-td">Saad Hasan</td>
-                    <td className="table-td">
-                      https://github.com/Learn-with-Sumit/assignment-1
-                    </td>
-                    <td className="table-td">100</td>
-                  </tr>
+                  {assignmentMarks.map((assignmentMark, index) => (
+                    <AssignmentMarkSingle
+                      index={index}
+                      assignmentMark={assignmentMark}
+                      key={index}
+                    />
+                  ))}
                 </tbody>
               </table>
             </div>

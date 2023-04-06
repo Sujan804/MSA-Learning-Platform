@@ -6,6 +6,7 @@ import Quiz from "../../components/Quiz";
 const Quizzes = () => {
   const quizzes = useSelector((state) => state.quiz.quizzes);
   console.log("q", quizzes);
+
   return (
     <>
       <Navbar />

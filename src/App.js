@@ -7,10 +7,10 @@ import Assignments from "./pages/admin/Assignments";
 import Dashboard from "./pages/admin/Dashboard";
 import Quizzes from "./pages/admin/Quizzes";
 import Videos from "./pages/admin/Videos";
-import Assignment from "./pages/student/Assignment";
 import CoursePlayer from "./pages/student/CoursePlayer";
 import LeaderBoard from "./pages/student/LeaderBoard";
 import Quiz from "./pages/student/Quiz";
+import StudentAssignment from "./pages/student/StudentAssignment";
 import StudentLogin from "./pages/student/StudentLogin";
 import StudentReg from "./pages/student/StudentRegistration";
 function App() {
@@ -50,7 +50,7 @@ function App() {
           path="/assignment/:id"
           element={
             <StudentRoute>
-              <Assignment />
+              <StudentAssignment />
             </StudentRoute>
           }
         />

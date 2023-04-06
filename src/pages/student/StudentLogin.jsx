@@ -17,7 +17,7 @@ const StudentLogin = () => {
       setError(responseError.data);
     }
     if (data?.accessToken && data.user) {
-      navigate("/leaderboard");
+      navigate("/video/1");
     }
   }, [data, responseError, navigate]);
 
