@@ -4,6 +4,7 @@ import { userLoggedIn } from "../features/auth/authSlice";
 const useAdminAuth = () => {
   const dispatch = useDispatch();
   const localAuth = localStorage?.getItem("auth");
+
   useEffect(() => {
     if (localAuth) {
       const auth = JSON.parse(localAuth);
@@ -18,7 +19,7 @@ const useAdminAuth = () => {
     }
   }, [dispatch, localAuth]);
   const user = JSON.parse(localAuth).user;
-  if (user) {
+  if (user.role === "admin") {
     return true;
   } else {
     return false;
@@ -45,7 +46,7 @@ const useStudentAuth = () => {
     }
   }, [dispatch, localAuth]);
   const user = JSON.parse(localAuth).user;
-  if (user) {
+  if (user.role === "student") {
     return true;
   } else {
     return false;
