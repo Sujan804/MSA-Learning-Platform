@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Navbar from "../../components/Navbar";
 import Video from "../../components/Video";
+import AddVideoModal from "../../components/modal/AddVideoModal";
 
 const Videos = () => {
+  const [showModal, setShowModal] = useState(false);
   const videos = useSelector((state) => state.video.videos);
   return (
     <>
@@ -12,7 +14,12 @@ const Videos = () => {
         <div className="mx-auto max-w-full px-5 lg:px-20">
           <div className="px-3 py-20 bg-opacity-10">
             <div className="w-full flex">
-              <button className="btn ml-auto">Add Video</button>
+              <button
+                className="btn ml-auto"
+                onClick={() => setShowModal(true)}
+              >
+                Add Video
+              </button>
             </div>
             <div className="overflow-x-auto mt-4">
               <table className="divide-y-1 text-base divide-gray-600 w-full">
@@ -32,6 +39,9 @@ const Videos = () => {
               </table>
             </div>
           </div>
+          {showModal ? (
+            <AddVideoModal showModal={showModal} setShowModal={setShowModal} />
+          ) : null}
         </div>
       </section>
     </>
