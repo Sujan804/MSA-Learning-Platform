@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import AdminRoute from "./components/AdminRoute";
 import StudentRoute from "./components/StudentRoute";
+import AddVideoModal from "./components/modal/AddVideoModal";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AssignmentMark from "./pages/admin/AssignmentMark";
 import Assignments from "./pages/admin/Assignments";
@@ -96,6 +97,14 @@ function App() {
             element={
               <AdminRoute>
                 <Videos />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="video/edit/:id"
+            element={
+              <AdminRoute>
+                <AddVideoModal />
               </AdminRoute>
             }
           />

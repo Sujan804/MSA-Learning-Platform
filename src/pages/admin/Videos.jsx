@@ -33,7 +33,13 @@ const Videos = () => {
 
                 <tbody className="divide-y divide-slate-600/50">
                   {videos.map((video, index) => (
-                    <Video video={video} index={index} key={video.id} />
+                    <Video
+                      video={video}
+                      index={index}
+                      key={video.id}
+                      showModal={showModal}
+                      setShowModal={setShowModal}
+                    />
                   ))}
                 </tbody>
               </table>

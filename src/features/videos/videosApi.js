@@ -3,14 +3,16 @@ import { setVideos } from "./videosSlice";
 export const videosApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getVideos: builder.query({
-      query: () => ({
-        url: `/videos`,
-      }),
+      query: () => {
+        return {
+          url: `/videos`,
+        };
+      },
       providesTags: ["videos"],
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-          console.log("qe", result);
+
           dispatch(
             setVideos({
               videos: result.data,
@@ -37,7 +39,37 @@ export const videosApi = apiSlice.injectEndpoints({
       },
       invalidatesTags: ["videos"],
     }),
+    deleteVideo: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/videos/${id}`,
+          method: "DELETE",
+          body: {},
+        };
+      },
+      invalidatesTags: ["videos"],
+    }),
+    editVideo: builder.mutation({
+      query: ({ id, data }) => {
+        console.log("id", id, data);
+        return {
+          url: `/videos/${id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        const result = await queryFulfilled;
+        console.log("af", result.data);
+      },
+      invalidatesTags: ["videos"],
+    }),
   }),
 });
 
-export const { useGetVideosQuery, useAddVideosMutation } = videosApi;
+export const {
+  useGetVideosQuery,
+  useAddVideosMutation,
+  useDeleteVideoMutation,
+  useEditVideoMutation,
+} = videosApi;

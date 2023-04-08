@@ -1,19 +1,25 @@
 import React, { useState } from "react";
-import { useAddVideosMutation } from "../../features/videos/videosApi";
-const AddVideoModal = ({ editMode, showModal, setShowModal, videoToEdit }) => {
-  const [addVideos, { isSuccess }] = useAddVideosMutation();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
-  const [views, setViews] = useState("");
-  const [duration, setDuration] = useState("");
-  if (!setShowModal) {
-    setShowModal = showModal;
-  }
+import { useEditVideoMutation } from "../../features/videos/videosApi";
+
+const EditVideoModal = ({ setOpenModal, openModal, videoToEdit }) => {
+  const [editVideos, { isSuccess }] = useEditVideoMutation();
+  const [title, setTitle] = useState(videoToEdit ? videoToEdit.title : "");
+  const [description, setDescription] = useState(
+    videoToEdit ? videoToEdit.description : ""
+  );
+  const [url, setUrl] = useState(videoToEdit ? videoToEdit.url : "");
+  const [views, setViews] = useState(videoToEdit ? videoToEdit.views : "");
+  const [duration, setDuration] = useState(
+    videoToEdit ? videoToEdit.duration : ""
+  );
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    addVideos({ title, description, url, views, duration });
-    setShowModal(false);
+    editVideos({
+      id: videoToEdit.id,
+      data: videoToEdit,
+    });
+    setOpenModal(false);
   };
 
   return (
@@ -29,7 +35,7 @@ const AddVideoModal = ({ editMode, showModal, setShowModal, videoToEdit }) => {
               </h3>
               <button
                 className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                onClick={() => setShowModal(false)}
+                onClick={() => setOpenModal(false)}
               >
                 <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                   ×
@@ -102,7 +108,7 @@ const AddVideoModal = ({ editMode, showModal, setShowModal, videoToEdit }) => {
                     type="submit"
                     className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
                   >
-                    Add Video
+                    Keep Changes
                   </button>
                 </div>
               </form>
@@ -112,7 +118,7 @@ const AddVideoModal = ({ editMode, showModal, setShowModal, videoToEdit }) => {
               <button
                 className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="submit"
-                onClick={() => setShowModal(false)}
+                onClick={() => setOpenModal(false)}
               >
                 Close
               </button>
@@ -125,4 +131,4 @@ const AddVideoModal = ({ editMode, showModal, setShowModal, videoToEdit }) => {
   );
 };
 
-export default AddVideoModal;
+export default EditVideoModal;
