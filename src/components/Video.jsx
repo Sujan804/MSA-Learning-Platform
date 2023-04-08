@@ -4,8 +4,8 @@ import { useDeleteVideoMutation } from "../features/videos/videosApi";
 import EditVideoModal from "./modal/EditVideoModal";
 function getWordStr(str) {
   let string;
-  string = str.split(/\s+/).slice(0, 10).join(" ");
-  string += "...";
+  if (str.length > 2) string = str.split(/\s+/).slice(0, 10).join(" ");
+  else string = "description...";
   return string;
 }
 const Video = ({ video, index }) => {
@@ -14,12 +14,11 @@ const Video = ({ video, index }) => {
   const [deleteItem, { isSuccess, isError, isLoading }] =
     useDeleteVideoMutation();
   const deleteHandle = (id) => {
-    console.log(id, "success", isSuccess, "error", isError);
     deleteItem(id);
-    // console.log(video.id, "success", isSuccess);
+
     navigate("/admin/videos");
   };
-  // console.log(openModal);
+
   return (
     <>
       <tr>

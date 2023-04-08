@@ -31,11 +31,8 @@ export const videosApi = apiSlice.injectEndpoints({
         try {
           const result = await queryFulfilled;
           if (result) {
-            console.log("result", result.data);
           }
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (error) {}
       },
       invalidatesTags: ["videos"],
     }),
@@ -51,16 +48,16 @@ export const videosApi = apiSlice.injectEndpoints({
     }),
     editVideo: builder.mutation({
       query: ({ id, data }) => {
-        console.log("id", id, data);
         return {
           url: `/videos/${id}`,
-          method: "PATCH",
+          method: "PUT",
           body: data,
         };
       },
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        const result = await queryFulfilled;
-        console.log("af", result.data);
+        try {
+          const result = await queryFulfilled;
+        } catch (error) {}
       },
       invalidatesTags: ["videos"],
     }),

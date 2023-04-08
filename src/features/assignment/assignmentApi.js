@@ -37,8 +37,30 @@ export const assignmentApi = apiSlice.injectEndpoints({
       },
       invalidatesTags: ["assignments"],
     }),
+    deleteAssignment: builder.mutation({
+      query: (id) => ({
+        url: `/assignments/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["assignments"],
+    }),
+    editAssignment: builder.mutation({
+      query: ({ id, data }) => {
+        console.log("id", id, "data", data);
+        return {
+          url: `/assignments/${id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
+      invalidatesTags: ["assignments"],
+    }),
   }),
 });
 
-export const { useGetAssignmentsQuery, useAddAssignmentsMutation } =
-  assignmentApi;
+export const {
+  useGetAssignmentsQuery,
+  useAddAssignmentsMutation,
+  useDeleteAssignmentMutation,
+  useEditAssignmentMutation,
+} = assignmentApi;

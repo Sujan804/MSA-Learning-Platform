@@ -68,32 +68,6 @@
       "views": "91.2K",
       "duration": "31:30",
       "createdAt": "2023-02-24T17:59:00.000Z"
-    },
-    {
-      "id": 3,
-      "title": "Debounce Function in JavaScript - JavaScript Job Interview question",
-      "description": "In this video, I have explained about the debounce function in JavaScript. This is a common question interviewers ask at Job Interviews. If you watch this video carefully, you will understand what is debounce and how to handle it with custom debounce function.",
-      "url": "https://www.youtube.com/embed/dD9O8DnIBj4",
-      "views": "51.2K",
-      "duration": "5:30",
-      "createdAt": "2023-01-15T15:17:01.727Z"
-    },
-    {
-      "id": 4,
-      "title": "#4 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
-      "description": "JavaScript Tips and Tricks - JavaScript Job Interview Questions - Bangla Tutorial \nIn this video, I have shown 8 more JavaScript pro tips that will make a JavaScript Developer's life easier.",
-      "url": "https://www.youtube.com/embed/E9_R88eKcBM",
-      "views": "91.2K",
-      "duration": "31:30",
-      "createdAt": "2023-02-24T17:59:00.000Z"
-    },
-    {
-      "title": "Facing the Future: The Truth About Artificial Intelligence and Our Jobs - Bangla",
-      "description": "Facing the Future: The Truth About Artificial Intelligence and Our Jobs - Bangla",
-      "url": "https://youtu.be/BihZd2x8Qh8",
-      "views": "234",
-      "duration": "34:8",
-      "id": 5
     }
   ],
   "assignments": [
@@ -102,42 +76,14 @@
       "title": "Assignment 1 - Implement Debounce Function",
       "video_id": 1,
       "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
-      "totalMark": 100
+      "totalMark": 1000
     },
     {
       "id": 2,
       "title": "Assignment 2 - Implement Best Practices",
-      "video_id": 2,
+      "video_id": 3,
       "video_title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
-      "totalMark": 100
-    },
-    {
-      "title": "Add two number",
-      "video_id": null,
-      "video_title": "Add two number Add two number",
-      "totalMark": "100",
-      "id": 3
-    },
-    {
-      "title": "5445",
-      "video_id": "4",
-      "video_title": "4545",
-      "totalMark": "12",
-      "id": 4
-    },
-    {
-      "title": "Facing the Future: The Truth About Artificial Intelligence and Our Jobs - Bangla",
-      "video_id": 1,
-      "video_title": "Facing the Future: The Truth About Artificial Intelligence and Our Jobs - Bangla",
-      "totalMark": 100,
-      "id": 5
-    },
-    {
-      "title": "",
-      "video_id": null,
-      "video_title": "",
-      "totalMark": null,
-      "id": 6
+      "totalMark": 98
     }
   ],
   "quizzes": [
