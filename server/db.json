@@ -88,34 +88,6 @@
   ],
   "quizzes": [
     {
-      "id": 1,
-      "question": "What is a Debounce function in JavaScript?",
-      "video_id": 1,
-      "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
-      "options": [
-        {
-          "id": "1",
-          "option": "A function that is called after a certain time interval",
-          "isCorrect": true
-        },
-        {
-          "id": "2",
-          "option": "A function that is called after a certain time interval",
-          "isCorrect": false
-        },
-        {
-          "id": 3,
-          "option": "A function that is called after a certain time interval",
-          "isCorrect": false
-        },
-        {
-          "id": 4,
-          "option": "A function that is called after a certain time interval",
-          "isCorrect": false
-        }
-      ]
-    },
-    {
       "id": 2,
       "question": "Which of the following is an example of a situation where you would use the Debounce function?",
       "video_id": 1,

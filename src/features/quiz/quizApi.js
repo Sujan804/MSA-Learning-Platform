@@ -37,7 +37,18 @@ export const quizApi = apiSlice.injectEndpoints({
       },
       invalidatesTags: ["quizzes"],
     }),
+    deleteQuizzes: builder.mutation({
+      query: (id) => ({
+        url: `/quizzes/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["quizzes"],
+    }),
   }),
 });
 
-export const { useGetQuizzesQuery, useAddQuizzesMutation } = quizApi;
+export const {
+  useGetQuizzesQuery,
+  useAddQuizzesMutation,
+  useDeleteQuizzesMutation,
+} = quizApi;

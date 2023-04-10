@@ -5,7 +5,6 @@ import Quiz from "../../components/Quiz";
 
 const Quizzes = () => {
   const quizzes = useSelector((state) => state.quiz.quizzes);
-  console.log("q", quizzes);
 
   return (
     <>
@@ -28,7 +27,7 @@ const Quizzes = () => {
 
                 <tbody className="divide-y divide-slate-600/50">
                   {quizzes.map((quiz, index) => (
-                    <Quiz index={index} quiz={quiz} key={quiz.title} />
+                    <Quiz index={index} quiz={quiz} key={index} />
                   ))}
                 </tbody>
               </table>
